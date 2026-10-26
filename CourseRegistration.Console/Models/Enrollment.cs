@@ -1,6 +1,11 @@
-﻿namespace CourseRegistration.Console.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CourseRegistration.Console.Models
 {
-    internal class Enrollment
+    public class Enrollment
     {
+        [ForeignKey("Learners")]
+        public int LearnerId { get; set; }
+        public DateTime EnrolledAt { get; set; }
     }
 }
