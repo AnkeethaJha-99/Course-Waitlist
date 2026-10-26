@@ -67,6 +67,7 @@ namespace CourseRegistration.Console.Services
                 }
                 else
                 {
+                    _courseRepository.AddToWaitlist(new WaitlistEntry { LearnerId = learnerId });
                     return EnrollmentResult.PrerequisiteNotMet;
                 }
 
@@ -114,8 +115,8 @@ namespace CourseRegistration.Console.Services
                                 LearnerId = eligibleLearner.Id,
                                 EnrolledAt = DateTime.UtcNow
                             };
-                            _courseRepository.AddEnrollment(enrollment);
                             _courseRepository.RemoveFromWaitlist(eligibleLearner.Id);
+                            _courseRepository.AddEnrollment(enrollment);
                         }
                     }
                     return EnrollmentResult.Dropped; // Successfully dropped

@@ -47,3 +47,29 @@ General Observations
 My Review and changes
 - Updated the capacity logic
 - verified the wailist sequence generation
+
+3. Prompt used
+Write xUnit unit tests for my existing #file:'CourseEnrollmentService.cs'  using my current models, repository, and result enum.
+
+Cover:
+
+- Enrollment when seats are available and when the course is full.
+- Duplicate enrollment and duplicate waitlist requests.
+- Missing learner and prerequisite failure.
+- Successful drop, invalid drop, and repeated drop.
+- FIFO waitlist promotion, skipping ineligible learners while retaining them on the waitlist.
+- No eligible learner available for promotion.
+- Verify both returned results and repository state after each operation.
+
+Use a fresh in-memory repository for each test. Follow my existing project conventions and use clear test names. Do not modify production code or unrelated files. Ensure the tests compile and run.
+
+Response Summary
+Provided 11 test cases.
+•	Each test uses a fresh InMemoryCourseRepository and CourseEnrollmentService.
+•	Tests cover all requested scenarios, including edge cases and repository state checks.
+•	Test names are descriptive and follow your conventions.
+•	The tests assume your InMemoryCourseRepository and models behave as specified in your requirements.
+
+My Review and changes - 
+- Checked and updated correct assertions
+- Ran the test cases and updated the methods for failed test cases
