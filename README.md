@@ -170,7 +170,7 @@ Record the actual results after executing the build, test, and manual verificati
 | `dotnet restore` | Restore complete |
 | `dotnet build` | build succeeded |
 | `dotnet test` | Test summary: total: 11, failed: 0, succeeded: 11, skipped: 0 |
-| Manual console testing | Opened the console app with learners list and operation options |
+| `dotnet run` | Opened the console app with learners list and operation options |
 
 ---
 
