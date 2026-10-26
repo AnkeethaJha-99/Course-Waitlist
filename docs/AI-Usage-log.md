@@ -27,3 +27,23 @@ My review and changes:
 
 Files affected:
 - "Repositories/InMemoryCourseRepository.cs"
+
+
+2. Prompt used
+
+#file:'CourseEnrollmentService.cs' Review my service . Validate both methods - Enroll and DropEnrollment() for correctness, edge cases, duplicate requests, prerequisite checks, capacity limits, FIFO waitlist promotion and invaild or repeated drops.
+Check for null references, incorrect return results and inconsistent repository states. Varify the ineligible waitlisted learners are skipped and earliest eligile learner is promoted.
+
+DO NOT REWRITE MY CODE OR MODIFY ANY FILES. Report the issues found, explain why each is an issue and suggest minimal fixes.
+
+
+response
+General Observations
+•	Null Reference Risks: Several repository methods are assumed to never return null. Defensive programming would check for nulls.
+•	Thread Safety: Not addressed, but acceptable for in-memory/single-threaded use.
+•	Error Logging: Exceptions are caught but not logged. Consider logging for diagnostics.
+•	Return Results: Generally correct and consistent with method outcomes.
+
+My Review and changes
+- Updated the capacity logic
+- verified the wailist sequence generation

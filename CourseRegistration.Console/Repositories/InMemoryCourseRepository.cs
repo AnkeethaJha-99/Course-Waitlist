@@ -10,14 +10,14 @@ namespace CourseRegistration.Console.Repositories
         private readonly List<WaitlistEntry> _waitlist = new();
         private readonly CourseOffering _courseOffering;
 
-        public InMemoryCourseRepository(IEnumerable<(int Id, Learners Learner)> learners, CourseOffering courseOffering)
+        public InMemoryCourseRepository(IEnumerable<Learners> learners, CourseOffering courseOffering)
         {
             _courseOffering = courseOffering ?? throw new ArgumentNullException(nameof(courseOffering));
 
-            foreach (var (id, learner) in learners)
+            foreach (var learner in learners)
             {
-                if (_learnersById.ContainsKey(id))
-                    throw new ArgumentException($"Duplicate learner Id: {id}");
+                if (_learnersById.ContainsKey(learner.Id))
+                    throw new ArgumentException($"Duplicate learner Id: {learner.Id}");
 
                 if (learner == null || string.IsNullOrWhiteSpace(learner.Email))
                     throw new ArgumentException("Learner or Email is null/empty");
@@ -25,8 +25,8 @@ namespace CourseRegistration.Console.Repositories
                 if (_emailToId.ContainsKey(learner.Email))
                     throw new ArgumentException($"Duplicate learner email: {learner.Email}");
 
-                _learnersById[id] = learner;
-                _emailToId[learner.Email] = id;
+                _learnersById[learner.Id] = learner;
+                _emailToId[learner.Email] = learner.Id;
             }
         }
 
